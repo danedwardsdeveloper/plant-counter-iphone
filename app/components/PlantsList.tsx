@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, FlatList, SectionList, StyleSheet } from 'react-native';
+import { View, FlatList, SectionList } from 'react-native';
 
 import { Plant, SortMethod, Section } from '../types';
 
@@ -55,14 +55,15 @@ export default function PlantsList({
 	);
 
 	return (
-		<View style={styles.container}>
+		<View className="flex-1 mx-3 mt-3">
 			{sortMethod === 'alphabetical' ? (
-				<FlatList
-					data={plants.sort(sortAlphabetically)}
-					renderItem={renderPlantRow}
-					keyExtractor={(item) => item.name}
-					style={styles.alphabetical}
-				/>
+				<View className="p-4 bg-white rounded-xl">
+					<FlatList
+						data={plants.sort(sortAlphabetically)}
+						renderItem={renderPlantRow}
+						keyExtractor={(item) => item.name}
+					/>
+				</View>
 			) : (
 				<SectionList
 					sections={groupedData}
@@ -74,12 +75,3 @@ export default function PlantsList({
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
-	alphabetical: {
-		marginHorizontal: 8,
-	},
-});

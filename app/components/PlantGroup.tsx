@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import tw from 'twrnc';
+import { View, Text } from 'react-native';
 
 import { Plant as PlantType } from '../types';
 
@@ -20,8 +19,8 @@ export default function PlantGroup({
 	onTogglePlant,
 }: PlantGroupProps) {
 	return (
-		<View style={[styles.container, tw`bg-slate-200`]}>
-			<Text style={styles.category}>{category}</Text>
+		<View className="bg-white rounded-xl p-6 mb-4">
+			<Text className="text-lg text-gray-600 mb-3">{category}</Text>
 			{plants.map((plant) => (
 				<Plant
 					key={plant.name}
@@ -33,16 +32,3 @@ export default function PlantGroup({
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		borderRadius: 8,
-		margin: 8,
-		padding: 8,
-	},
-	category: {
-		fontSize: 18,
-		color: '#333',
-		marginBottom: 8,
-	},
-});
