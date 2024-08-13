@@ -71,6 +71,16 @@ export default function PlantsList({
 		</View>
 	);
 
+	const NothingFoundMessage = () => (
+		<View className="flex-1 items-center pt-10">
+			<Text className="text-xl text-red-600">Sorry, no results.</Text>
+		</View>
+	);
+
+	if (plants.length === 0) {
+		return <NothingFoundMessage />;
+	}
+
 	return (
 		<View className="flex-1">
 			{sortMethod === 'alphabetical' ? (
