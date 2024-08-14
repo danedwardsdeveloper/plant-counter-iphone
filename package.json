@@ -4,9 +4,9 @@
 	"version": "1.0.0",
 	"scripts": {
 		"start": "expo start",
+		"dev": "npx expo run:ios",
 		"android": "expo run:android",
 		"ios": "expo run:ios",
-		"local": "npx expo run:ios",
 		"web": "expo start --web",
 		"test": "jest --watchAll",
 		"lint": "expo lint"
