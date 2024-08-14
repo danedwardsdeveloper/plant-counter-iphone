@@ -1,18 +1,18 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Modal, Text, Pressable, View, TouchableOpacity } from 'react-native';
 import { BlurView } from 'expo-blur';
+import { usePlantContext } from '../contexts/PlantContext';
 
-interface ResetButtonProps {
-	onReset: () => void;
-}
-
-export default function ResetButton({ onReset }: ResetButtonProps) {
+export default function ResetButton() {
 	const [modalVisible, setModalVisible] = useState(false);
+	const { checkedPlants, resetCheckedPlants } = usePlantContext();
 
-	const handleReset = () => {
+	const handleReset = useCallback(() => {
 		setModalVisible(false);
-		onReset();
-	};
+		resetCheckedPlants();
+	}, [resetCheckedPlants]);
+
+	const isDisabled = checkedPlants.size === 0;
 
 	return (
 		<View className="flex-1 justify-center items-center">
@@ -53,8 +53,11 @@ export default function ResetButton({ onReset }: ResetButtonProps) {
 				</BlurView>
 			</Modal>
 			<TouchableOpacity
-				className="bg-red-400 p-3 rounded-lg m-1"
+				className={`bg-red-400 p-3 rounded-lg m-1 ${
+					isDisabled ? 'opacity-50' : ''
+				}`}
 				onPress={() => setModalVisible(true)}
+				disabled={isDisabled}
 			>
 				<Text className="text-black text-sm font-semibold">Reset</Text>
 			</TouchableOpacity>
