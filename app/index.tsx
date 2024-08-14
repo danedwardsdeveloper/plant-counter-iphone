@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { SafeAreaView } from 'react-native';
-
-import PlantProvider from './contexts/PlantContext';
+import { useState, useRef, useEffect } from 'react';
+import { SafeAreaView, Animated, Easing } from 'react-native';
 
 import { plants } from './data/plants';
+
+import PlantProvider from './contexts/PlantContext';
 
 import MenuBar from './components/MenuBar';
 import Controls from './components/Controls';
@@ -11,10 +11,20 @@ import PlantList from './components/PlantList';
 
 export default function Index() {
 	const [showControls, setShowControls] = useState(false);
+	const heightAnim = useRef(new Animated.Value(0)).current;
 
 	const toggleControls = () => {
 		setShowControls(!showControls);
 	};
+
+	useEffect(() => {
+		Animated.timing(heightAnim, {
+			toValue: showControls ? 130 : 0,
+			duration: 300,
+			easing: Easing.ease,
+			useNativeDriver: false,
+		}).start();
+	}, [showControls]);
 
 	return (
 		<PlantProvider initialPlants={plants}>
@@ -24,7 +34,14 @@ export default function Index() {
 					onToggleControls={toggleControls}
 				/>
 
-				{showControls && <Controls />}
+				<Animated.View
+					style={{
+						height: heightAnim,
+						overflow: 'hidden',
+					}}
+				>
+					<Controls />
+				</Animated.View>
 
 				<PlantList />
 			</SafeAreaView>
