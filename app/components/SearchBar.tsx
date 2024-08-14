@@ -1,16 +1,10 @@
 import { View, TextInput, TouchableOpacity } from 'react-native';
 import SearchManager from './SearchHandler';
 import Icon from './Icon';
-import { Plant } from '../types';
 
-interface SearchBarProps {
-	plants: Plant[];
-	onSearch: (searchResults: Plant[]) => void;
-}
-
-export default function SearchBar({ plants, onSearch }: SearchBarProps) {
+export default function SearchBar() {
 	return (
-		<SearchManager plants={plants} onSearch={onSearch}>
+		<SearchManager>
 			{({ searchTerm, handleSearch, handleClear }) => (
 				<View className="flex-row items-center bg-slate-200 rounded-2xl px-3">
 					<Icon name="magnifyingGlass" size={20} colour="text-gray-600" />

@@ -1,10 +1,13 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import Fuse from 'fuse.js';
+
 import { Plant } from '../types';
 
+import { usePlantContext } from '../contexts/PlantContext';
+
+import { plants as originalPlants } from '../data/plants';
+
 interface SearchHandlerProps {
-	plants: Plant[];
-	onSearch: (searchResults: Plant[]) => void;
 	children: (props: {
 		searchTerm: string;
 		handleSearch: (term: string) => void;
@@ -12,26 +15,24 @@ interface SearchHandlerProps {
 	}) => React.ReactNode;
 }
 
-export default function SearchHandler({
-	plants,
-	onSearch,
-	children,
-}: SearchHandlerProps) {
+export default function SearchHandler({ children }: SearchHandlerProps) {
+	const { filteredPlants, setFilteredPlants } = usePlantContext();
+
 	const [searchTerm, setSearchTerm] = useState('');
 	const [version, setVersion] = useState(0);
 
 	useEffect(() => {
 		setVersion((v) => v + 1);
-	}, [plants]);
+	}, [originalPlants]);
 
 	const fuse = useMemo(
 		() =>
-			new Fuse(plants, {
+			new Fuse(filteredPlants, {
 				keys: ['name', 'category'],
-				threshold: 0.2,
+				threshold: 0.3,
 				ignoreLocation: true,
 			}),
-		[plants, version]
+		[originalPlants, version]
 	);
 
 	const handleSearch = useCallback(
@@ -39,13 +40,13 @@ export default function SearchHandler({
 			setSearchTerm(term);
 
 			if (term.trim() === '') {
-				onSearch(plants);
+				setFilteredPlants(originalPlants);
 			} else {
-				const exactNameMatch = plants.filter(
+				const exactNameMatch = filteredPlants.filter(
 					(plant) => plant.name.toLowerCase() === term.toLowerCase()
 				);
 
-				const exactCategoryMatch = plants.filter(
+				const exactCategoryMatch = filteredPlants.filter(
 					(plant) => plant.category.toLowerCase() === term.toLowerCase()
 				);
 
@@ -69,16 +70,16 @@ export default function SearchHandler({
 
 				const uniqueResults = Array.from(new Set(combinedResults));
 
-				onSearch(uniqueResults);
+				setFilteredPlants(uniqueResults);
 			}
 		},
-		[fuse, onSearch, plants]
+		[fuse, setFilteredPlants, filteredPlants]
 	);
 
 	const handleClear = useCallback(() => {
 		setSearchTerm('');
-		onSearch(plants);
-	}, [onSearch, plants]);
+		setFilteredPlants(originalPlants);
+	}, [setFilteredPlants, filteredPlants]);
 
 	return children({ searchTerm, handleSearch, handleClear });
 }

@@ -1,19 +1,21 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
 
+import { usePlantContext } from '../contexts/PlantContext';
+
 import Icon from './Icon';
 
 interface MenuBarProps {
-	plantCount: number;
 	controlsVisible: boolean;
 	onToggleControls: () => void;
 }
 
 export default function MenuBar({
-	plantCount,
 	controlsVisible,
 	onToggleControls,
 }: MenuBarProps) {
+	const { checkedPlants } = usePlantContext();
+
 	const rotateAnim = React.useRef(
 		new Animated.Value(controlsVisible ? 1 : 0)
 	).current;
@@ -37,7 +39,7 @@ export default function MenuBar({
 				<Icon name="leaf" colour="text-green-600" size={40} />
 			</View>
 			<View className="flex-1 items-center">
-				<Text className="text-4xl font-bold">{plantCount}</Text>
+				<Text className="text-4xl font-bold">{checkedPlants.size}</Text>
 			</View>
 			<TouchableOpacity
 				className="absolute right-4"
