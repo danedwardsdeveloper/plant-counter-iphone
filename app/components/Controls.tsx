@@ -7,8 +7,7 @@ import ResetButton from './ResetButton';
 import SortButtons from './SortButtons';
 
 export default function Controls() {
-	const { sortMethod, setSortMethod, filteredPlants, setFilteredPlants } =
-		usePlantContext();
+	const { sortMethod, setSortMethod } = usePlantContext();
 
 	return (
 		<View className="mt-3 mx-3">
