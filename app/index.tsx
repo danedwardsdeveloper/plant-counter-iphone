@@ -1,7 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { SafeAreaView } from 'react-native';
-
-import { Plant } from './types';
 
 import PlantProvider from './contexts/PlantContext';
 
@@ -17,10 +15,6 @@ export default function Index() {
 	const toggleControls = () => {
 		setShowControls(!showControls);
 	};
-
-	// const handleSearch = useCallback((searchResults: Plant[]) => {
-	// 	setFilteredPlants(searchResults);
-	// }, []);
 
 	return (
 		<PlantProvider initialPlants={plants}>
