@@ -28,7 +28,7 @@ export default function Controls({
 			</View>
 			<View className="flex-row justify-between ">
 				<View className="max-w-1/3">
-					<ResetButton onReset={onReset} />
+					<ResetButton />
 				</View>
 				<View className="flex-2 flex-row justify-around border border-gray-300 rounded-lg">
 					<SortButtons
