@@ -19,7 +19,7 @@ export default function Index() {
 
 	useEffect(() => {
 		Animated.timing(heightAnim, {
-			toValue: showControls ? 130 : 0,
+			toValue: showControls ? 128 : 0,
 			duration: 300,
 			easing: Easing.ease,
 			useNativeDriver: false,
