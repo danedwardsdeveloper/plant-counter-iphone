@@ -3,6 +3,8 @@ import { SafeAreaView } from 'react-native';
 
 import { SortMethod, Plant } from './types';
 
+import PlantProvider from './contexts/PlantContext';
+
 import { plants } from './data/plants';
 
 import MenuBar from './components/MenuBar';
@@ -40,27 +42,29 @@ export default function Index() {
 	};
 
 	return (
-		<SafeAreaView className="flex-1 bg-sky-100">
-			<MenuBar
-				plantCount={checkedPlants.size}
-				controlsVisible={showControls}
-				onToggleControls={toggleControls}
-			/>
-			{showControls && (
-				<Controls
-					plants={plants}
-					currentSortMethod={sortMethod}
-					onSortMethodChange={setSortMethod}
-					onSearch={handleSearch}
-					onReset={resetCheckedPlants}
+		<PlantProvider>
+			<SafeAreaView className="flex-1 bg-sky-100">
+				<MenuBar
+					plantCount={checkedPlants.size}
+					controlsVisible={showControls}
+					onToggleControls={toggleControls}
 				/>
-			)}
-			<PlantList
-				plants={filteredPlants}
-				sortMethod={sortMethod}
-				checkedPlants={checkedPlants}
-				onTogglePlant={togglePlant}
-			/>
-		</SafeAreaView>
+				{showControls && (
+					<Controls
+						plants={plants}
+						currentSortMethod={sortMethod}
+						onSortMethodChange={setSortMethod}
+						onSearch={handleSearch}
+						onReset={resetCheckedPlants}
+					/>
+				)}
+				<PlantList
+					plants={filteredPlants}
+					sortMethod={sortMethod}
+					checkedPlants={checkedPlants}
+					onTogglePlant={togglePlant}
+				/>
+			</SafeAreaView>
+		</PlantProvider>
 	);
 }
