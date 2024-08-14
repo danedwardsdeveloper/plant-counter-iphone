@@ -5,7 +5,7 @@ export interface Plant {
 
 export type SortMethod = 'alphabetical' | 'category';
 
-export interface Section {
+export interface PlantCategory {
 	title: string;
 	data: Plant[];
 }
