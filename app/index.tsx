@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { useState, useCallback } from 'react';
+import { SafeAreaView } from 'react-native';
 
 import { SortMethod, Plant } from './types';
 
@@ -7,12 +7,13 @@ import { plants } from './data/plants';
 
 import MenuBar from './components/MenuBar';
 import Controls from './components/Controls';
-import PlantsList from './components/PlantsList';
+import PlantList from './components/PlantList';
 
 export default function Index() {
 	const [checkedPlants, setCheckedPlants] = useState<Set<string>>(new Set());
 	const [sortMethod, setSortMethod] = useState<SortMethod>('alphabetical');
 	const [filteredPlants, setFilteredPlants] = useState<Plant[]>(plants);
+	const [showControls, setShowControls] = useState(false);
 
 	const handleSearch = useCallback((searchResults: Plant[]) => {
 		setFilteredPlants(searchResults);
@@ -30,34 +31,36 @@ export default function Index() {
 		});
 	};
 
+	const toggleControls = () => {
+		setShowControls(!showControls);
+	};
+
+	const resetCheckedPlants = () => {
+		setCheckedPlants(new Set());
+	};
+
 	return (
-		<SafeAreaView style={styles.container}>
-			<View style={styles.content}>
-				<MenuBar plantCount={checkedPlants.size} />
+		<SafeAreaView className="flex-1 bg-sky-100">
+			<MenuBar
+				plantCount={checkedPlants.size}
+				controlsVisible={showControls}
+				onToggleControls={toggleControls}
+			/>
+			{showControls && (
 				<Controls
 					plants={plants}
 					currentSortMethod={sortMethod}
 					onSortMethodChange={setSortMethod}
 					onSearch={handleSearch}
+					onReset={resetCheckedPlants}
 				/>
-				<PlantsList
-					plants={filteredPlants}
-					sortMethod={sortMethod}
-					checkedPlants={checkedPlants}
-					onTogglePlant={togglePlant}
-				/>
-			</View>
+			)}
+			<PlantList
+				plants={filteredPlants}
+				sortMethod={sortMethod}
+				checkedPlants={checkedPlants}
+				onTogglePlant={togglePlant}
+			/>
 		</SafeAreaView>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#f8fafc',
-	},
-	content: {
-		flex: 1,
-		paddingTop: 22,
-	},
-});
