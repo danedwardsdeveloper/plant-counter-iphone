@@ -22,6 +22,10 @@ export default function PlantsList({
 	const sortByCategory = (a: Plant, b: Plant) =>
 		a.category.localeCompare(b.category);
 
+	const alphabeticallySortedPlants = useMemo(() => {
+		return [...plants].sort(sortAlphabetically);
+	}, [plants]);
+
 	const groupedData = useMemo<Section[]>(() => {
 		const sorted = [...plants].sort(sortByCategory);
 		return sorted.reduce<Section[]>((acc, plant) => {
@@ -71,8 +75,16 @@ export default function PlantsList({
 		</View>
 	);
 
+	const renderPlantRows = (plantsToRender: Plant[]) => {
+		return plantsToRender.map((plant) =>
+			renderPlantRow(plant.name, checkedPlants.has(plant.name), () =>
+				onTogglePlant(plant.name)
+			)
+		);
+	};
+
 	const NothingFoundMessage = () => (
-		<View className="flex-1 items-center pt-10">
+		<View className="mt-3 items-center pt-10 px-6 py-3 mx-3 bg-white rounded-2xl">
 			<Text className="text-xl text-red-600">Sorry, no results.</Text>
 		</View>
 	);
@@ -86,15 +98,7 @@ export default function PlantsList({
 			{sortMethod === 'alphabetical' ? (
 				<ScrollView className="flex-1 mt-3">
 					<View className="mx-3 mb-20 px-6 py-3 bg-white rounded-2xl overflow-hidden">
-						{[...plants]
-							.sort(sortAlphabetically)
-							.map((plant) =>
-								renderPlantRow(
-									plant.name,
-									checkedPlants.has(plant.name),
-									() => onTogglePlant(plant.name)
-								)
-							)}
+						{renderPlantRows(alphabeticallySortedPlants)}
 					</View>
 				</ScrollView>
 			) : (
