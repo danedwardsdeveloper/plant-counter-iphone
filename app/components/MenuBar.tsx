@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { usePlantContext } from '../contexts/PlantContext';
 
 import Icon from './Icon';
+import About from './LogoButton';
 
 interface MenuBarProps {
 	controlsVisible: boolean;
@@ -34,17 +35,12 @@ export default function MenuBar({
 	});
 
 	return (
-		<View className="flex-row justify-center mt-5">
-			<View className="absolute left-4">
-				<Icon name="leaf" colour="text-green-600" size={40} />
-			</View>
-			<View className="flex-1 items-center">
-				<Text className="text-4xl font-bold">{checkedPlants.size}</Text>
-			</View>
-			<TouchableOpacity
-				className="absolute right-4"
-				onPress={onToggleControls}
-			>
+		<View className="flex-row justify-between items-center mt-5 px-3">
+			<About />
+
+			<Text className="text-4xl font-bold">{checkedPlants.size}</Text>
+
+			<TouchableOpacity onPress={onToggleControls}>
 				<Animated.View style={{ transform: [{ rotate }] }}>
 					<Icon name="chevron" colour="text-green-600" size={40} />
 				</Animated.View>
