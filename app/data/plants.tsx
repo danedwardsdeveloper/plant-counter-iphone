@@ -1,4 +1,4 @@
-import { Plant, Category } from '../types';
+import { Plant } from '../types';
 
 export const plants: Plant[] = (
 	[
@@ -17,7 +17,7 @@ export const plants: Plant[] = (
 		{ name: 'Boysenberry', category: 'Berries' },
 		{ name: 'Asparagus', category: 'Stems & stalks' },
 		{ name: 'Aubergine / Eggplant', category: 'Fruits as vegetables' },
-		{ name: 'Avocado', category: 'Fruits as vegetables' },
+		{ name: 'Avocado', category: 'Stone fruits' },
 		{ name: 'Bay leaf', category: 'Herbs' },
 		{ name: 'Basil', category: 'Herbs' },
 		{ name: 'Beetroot', category: 'Root vegetables' },
