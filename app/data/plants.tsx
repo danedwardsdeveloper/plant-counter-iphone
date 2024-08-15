@@ -1,33 +1,4 @@
-interface Plant {
-	name: string;
-	category: Category;
-}
-
-type Category =
-	| 'Citrus fruits'
-	| 'Berries'
-	| 'Stone fruits'
-	| 'Tropical fruits'
-	| 'Pome fruits'
-	| 'Melons'
-	| 'Fruits as vegetables'
-	| 'Other vegetables'
-	| 'Leafy vegetables'
-	| 'Cruciferous vegetables'
-	| 'Root vegetables'
-	| 'Squash & gourds'
-	| 'Alliums'
-	| 'Nuts'
-	| 'Seeds'
-	| 'Grains & pseudo-grains'
-	| 'Legumes'
-	| 'Brassicas'
-	| 'Herbs'
-	| 'Spices'
-	| 'Fungi'
-	| 'Stems & stalks'
-	| 'Seaweed & algae'
-	| 'Flowers';
+import { Plant, Category } from '../types';
 
 export const plants: Plant[] = (
 	[
@@ -69,7 +40,7 @@ export const plants: Plant[] = (
 		{ name: 'Chia seeds', category: 'Seeds' },
 		{ name: 'Chickpeas', category: 'Legumes' },
 		{ name: 'Chili', category: 'Fruits as vegetables' },
-		{ name: 'Chives', category: 'Herbs' },
+		{ name: 'Chives', category: 'Alliums' },
 		{ name: 'Chocolate / Cacao', category: 'Seeds' },
 		{ name: 'Cinnamon', category: 'Spices' },
 		{ name: 'Cloves', category: 'Spices' },
