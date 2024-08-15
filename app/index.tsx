@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SafeAreaView, Animated, Easing } from 'react-native';
 
 import { plants } from './data/plants';
@@ -19,7 +19,7 @@ export default function Index() {
 
 	useEffect(() => {
 		Animated.timing(heightAnim, {
-			toValue: showControls ? 128 : 0,
+			toValue: showControls ? 132 : 0,
 			duration: 300,
 			easing: Easing.ease,
 			useNativeDriver: false,
