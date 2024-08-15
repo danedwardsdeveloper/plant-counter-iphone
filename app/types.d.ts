@@ -1,6 +1,6 @@
 export interface Plant {
 	name: string;
-	category: string;
+	category: Category;
 }
 
 export type SortMethod = 'alphabetical' | 'category';
