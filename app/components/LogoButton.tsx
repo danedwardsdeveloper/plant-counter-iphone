@@ -58,7 +58,7 @@ export default function LogoButton() {
 										</View>
 
 										<Text className="text-base font-bold text-green-700">
-											Plant Counter
+											Plant-Counter
 										</Text>
 									</View>
 
