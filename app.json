@@ -3,12 +3,12 @@
 		"name": "Plant-Counter",
 		"slug": "plant-counter",
 		"scheme": "myapp",
-		"version": "1.0.0",
+		"version": "1.1",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"userInterfaceStyle": "automatic",
 		"splash": {
-			"image": "./assets/images/splash.png",
+			"image": "./assets/images/splashscreen.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#3DA35D"
 		},
@@ -17,7 +17,7 @@
 			"icon": "./assets/images/icon.png",
 			"supportsTablet": true,
 			"splash": {
-				"image": "./assets/images/splash.png",
+				"image": "./assets/images/splashscreen.png",
 				"resizeMode": "contain",
 				"backgroundColor": "#3DA35D"
 			}
