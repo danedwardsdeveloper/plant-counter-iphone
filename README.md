@@ -8,7 +8,7 @@ Eating 30 plants per week is much easier than you might think. The main difficul
 
 -  Clean & simple UI, inspired by the Tick Tick to-do list app
 -  Sort plants alphabetically or by category
--  [Fuzzy search](https://en.wikipedia.org/wiki/Approximate_string_matching) by plant name or category
+-  [Fuzzy search](https://en.wikipedia.org/wiki/Approximate_string_matching) by plant name or category.
 
 ## Features Roadmap
 
