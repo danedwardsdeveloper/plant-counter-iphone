@@ -185,4 +185,8 @@ export const plants: Plant[] = [
 	{ name: 'Pomelo', category: 'Citrus fruits' },
 	{ name: 'Ugli fruit', category: 'Citrus fruits' },
 	{ name: 'Key lime', category: 'Citrus fruits' },
+	{ name: 'Orange', category: 'Citrus fruits' },
+	{ name: 'Lemon', category: 'Citrus fruits' },
+	{ name: 'Grapes', category: 'Berries' },
+	{ name: 'Banana', category: 'Tropical fruits' },
 ];
