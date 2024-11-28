@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 
-import { usePlantContext } from '../contexts/PlantContext';
+import { usePlantContext } from '../contexts/AppContext';
 
 import Icon from './Icon';
 

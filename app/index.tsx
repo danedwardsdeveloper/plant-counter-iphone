@@ -3,7 +3,7 @@ import { SafeAreaView, Animated, Easing } from 'react-native';
 
 import { plants } from './data/plants';
 
-import PlantProvider from './contexts/PlantContext';
+import PlantProvider from './contexts/AppContext';
 
 import MenuBar from './components/MenuBar';
 import Controls from './components/Controls';

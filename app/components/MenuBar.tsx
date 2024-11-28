@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Animated } from 'react-native';
 
-import { usePlantContext } from '../contexts/PlantContext';
+import { usePlantContext } from '../contexts/AppContext';
 
 import Icon from './Icon';
 import About from './LogoButton';

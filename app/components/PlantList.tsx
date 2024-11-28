@@ -4,7 +4,7 @@ import Icon from './Icon';
 
 import { Plant, PlantCategory } from '../types';
 
-import { usePlantContext } from '../contexts/PlantContext';
+import { usePlantContext } from '../contexts/AppContext';
 
 export default function PlantsList() {
 	const { filteredPlants, sortMethod, checkedPlants, togglePlant } =

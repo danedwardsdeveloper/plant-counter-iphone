@@ -3,7 +3,7 @@ import Fuse from 'fuse.js';
 
 import { Plant } from '../types';
 
-import { usePlantContext } from '../contexts/PlantContext';
+import { usePlantContext } from '../contexts/AppContext';
 
 import { plants as originalPlants } from '../data/plants';
 

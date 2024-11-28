@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Modal, Text, Pressable, View, TouchableOpacity } from 'react-native';
 import { BlurView } from 'expo-blur';
-import { usePlantContext } from '../contexts/PlantContext';
+import { usePlantContext } from '../contexts/AppContext';
 
 export default function ResetButton() {
 	const [modalVisible, setModalVisible] = useState(false);
