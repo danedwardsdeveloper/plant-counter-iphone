@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-import { usePlantContext } from '../contexts/PlantContext';
+import { usePlantContext } from '../contexts/AppContext';
 
 import SearchBar from './SearchBar';
 import ResetButton from './ResetButton';
