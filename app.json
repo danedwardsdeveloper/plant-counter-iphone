@@ -22,6 +22,10 @@
 				"backgroundColor": "#3DA35D"
 			}
 		},
+		"android": {
+			"package": "com.danedwardsdeveloper.plantcounter",
+			"versionCode": 1
+		},
 		"plugins": ["expo-router"],
 		"experiments": {
 			"typedRoutes": true
